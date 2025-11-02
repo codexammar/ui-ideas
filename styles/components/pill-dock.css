@@ -1,0 +1,54 @@
+#pill-dock {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  /* Start neutral center; JS will set left/right with small inset */
+  left: calc(8px + var(--inset-left));
+  right: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding: 10px;
+  background: var(--dock-bg);
+  border: 1px solid var(--dock-border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow);
+  -webkit-backdrop-filter: saturate(140%) blur(12px);
+  backdrop-filter: saturate(140%) blur(12px);
+
+  opacity: 0;
+  pointer-events: none; /* hidden until positioned */
+  transition: opacity 160ms ease-out, transform 200ms ease-out;
+  z-index: 1000;
+}
+
+#pill-dock.ready {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dock-btn {
+  width: var(--hit-size);
+  height: var(--hit-size);
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+}
+
+.dock-btn:active {
+  outline: 0;
+  transform: scale(0.96);
+}
+
+.dock-btn img {
+  width: 22px;
+  height: 22px;
+  opacity: 0.9;
+}
+
+.dock-btn.is-active img {
+  opacity: 1;
+  filter: drop-shadow(0 0 0 var(--dock-active));
+}

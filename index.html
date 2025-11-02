@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Adaptive Thumb Dock – Mobile PoC</title>
+  <link rel="preload" href="styles/base.css" as="style">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/components/pill-dock.css">
+  <link rel="stylesheet" href="styles/components/nav-items.css">
+</head>
+<body>
+  <main class="page">
+    <header class="site-header">
+      <h1>Adaptive Thumb Dock</h1>
+      <p class="subtitle">Passive handedness detection; floating vertical nav that hugs your thumb’s edge.</p>
+    </header>
+
+    <section class="content" id="app">
+      <div id="views">
+        <section class="view is-active" data-view="home">
+          <h2>Home</h2>
+          <p>Scroll naturally. After one strong vertical swipe (or two normal swipes), the dock will choose a side.</p>
+          <p>This pill floats near the edge, not glued to it. It avoids hijacking scroll and doesn’t track your finger.</p>
+          <p>Keep scrolling a bit to let it learn. Then try the nav buttons.</p>
+          <div class="filler"></div>
+        </section>
+
+        <section class="view" data-view="messages">
+          <h2>Messages</h2>
+          <p>Placeholder list. Imagine threads here.</p>
+          <div class="filler"></div>
+        </section>
+
+        <section class="view" data-view="notifications">
+          <h2>Notifications</h2>
+          <p>Alerts, mentions, and the occasional humblebrag.</p>
+          <div class="filler"></div>
+        </section>
+
+        <section class="view" data-view="profile">
+          <h2>Profile</h2>
+          <p>Stats and settings would live here in a real app.</p>
+          <div class="filler"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <nav id="pill-dock" aria-label="Primary">
+    <button class="dock-btn" data-target="home" aria-label="Home">
+      <img src="assets/icons/home.svg" alt="">
+    </button>
+    <button class="dock-btn" data-target="messages" aria-label="Messages">
+      <img src="assets/icons/messages.svg" alt="">
+    </button>
+    <button class="dock-btn" data-target="notifications" aria-label="Notifications">
+      <img src="assets/icons/notifications.svg" alt="">
+    </button>
+    <button class="dock-btn" data-target="profile" aria-label="Profile">
+      <img src="assets/icons/profile.svg" alt="">
+    </button>
+  </nav>
+
+  <script defer src="scripts/utils/rafThrottle.js"></script>
+  <script defer src="scripts/utils/geometry.js"></script>
+  <script defer src="scripts/utils/storage.js"></script>
+  <script defer src="scripts/nav/mockRouter.js"></script>
+  <script defer src="scripts/ui/pillDock.js"></script>
+  <script defer src="scripts/gestures/handednessDetector.js"></script>
+  <script defer src="scripts/main.js"></script>
+</body>
+</html>

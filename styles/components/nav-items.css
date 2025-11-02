@@ -1,0 +1,17 @@
+/* Space for future long-press affordances; keep styles minimal now */
+.dock-btn {
+  position: relative;
+  touch-action: manipulation;
+}
+
+.dock-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  transition: background 120ms ease-out;
+}
+
+.dock-btn:active::after {
+  background: rgba(255,255,255,0.06);
+}
