@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adaptive Dock — Desktop PoC</title>
+  <link rel="preload" href="styles/base.css" as="style">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/desktop.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Desktop: Side-nearest-to-pointer Dock</h1>
+    <p class="subtitle">Work in progress. Move your cursor left/right; the dock tracks the nearest edge with smooth, fast animation.</p>
+  </header>
+
+  <main class="content">
+    <section class="pane">
+      <h2>Try it</h2>
+      <p>Wiggle the pointer across the screen. The dock switches sides based on proximity with a small hysteresis to prevent jitter.</p>
+      <p>The animation is hardware-accelerated (transform/backdrop), so it stays smooth even on busy pages.</p>
+      <div class="filler"></div>
+    </section>
+  </main>
+
+  <nav id="dock" aria-label="Primary">
+    <button class="dock-btn" data-target="home" aria-label="Home">
+      <img src="../assets/icons/home.svg" alt="">
+    </button>
+    <button class="dock-btn" data-target="messages" aria-label="Messages">
+      <img src="../assets/icons/messages.svg" alt="">
+    </button>
+    <button class="dock-btn" data-target="notifications" aria-label="Notifications">
+      <img src="../assets/icons/notifications.svg" alt="">
+    </button>
+    <button class="dock-btn" data-target="profile" aria-label="Profile">
+      <img src="../assets/icons/profile.svg" alt="">
+    </button>
+  </nav>
+
+  <script type="module" src="scripts/main.js"></script>
+</body>
+</html>

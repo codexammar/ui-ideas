@@ -1,0 +1,69 @@
+/* Dock visuals and motion tuned for desktop pointer behavior */
+#dock {
+  position: fixed;
+  top: 50%;
+  left: 0; /* anchor left; JS sets translateX(px) directly */
+  transform: translateY(-50%) translateX(14px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  padding: 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(24, 26, 31, 0.75);
+  -webkit-backdrop-filter: saturate(130%) blur(10px);
+  backdrop-filter: saturate(130%) blur(10px);
+  box-shadow:
+    0 8px 22px rgba(0,0,0,0.35),
+    0 2px 0 rgba(255,255,255,0.04) inset;
+
+  opacity: 0;
+
+  transition:
+    transform 260ms cubic-bezier(.2,.9,.2,1.2),
+    opacity 140ms ease-out,
+    filter 180ms ease-out;
+  z-index: 1000;
+
+  animation: dock-appear 260ms ease-out forwards;
+}
+
+@keyframes dock-appear {
+  from {
+    opacity: 0;
+    transform: translateY(-55%) translateX(14px) scale(.98);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(14px) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* NOTE: no transform here—avoid overriding inline transform */
+#dock.switching {
+  filter: saturate(120%);
+}
+
+/* Buttons */
+.dock-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  transition: transform 120ms ease-out, background 120ms ease-out;
+}
+
+.dock-btn:active { transform: scale(.94); }
+
+.dock-btn img {
+  width: 22px;
+  height: 22px;
+  opacity: .92;
+}
+
+.dock-btn:hover { background: rgba(255,255,255,0.06); }
